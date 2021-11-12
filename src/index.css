@@ -1,13 +1,197 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}
+:root{
+  --background-color:#0A3556;
+  --title-color:#0284C9;
+  --text-color:#D7E5EE;
+  --hover-color:#79BBD9;
+  --alternative-color:#F8F6F2;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #0284C9;
+  border-radius:6px;
+  transition:all .7s ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #79BBD9;
+}
+body{
+  background-color: var(--background-color);
+}
+.app{
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  background-color: var(--background-color);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app-title{
+  font-family: 'IBM Plex Serif', serif;
+  color:var(--text-color);
+  align-self:center;
+  padding:20px;
+  font-size:35px;
+}
+.navigation{
+  display:flex;
+  width:100%;
+  align-items:center;
+  flex-wrap:wrap;
+}
+@media screen and (max-width:530px){
+  .navigation{
+    justify-content: center;
+  }
+  .navigation .getMovies{
+   margin-right:auto;
+  }
+  .navigation form button {
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:280px){
+  .navigation{
+    justify-content: center;
+  }
+  .navigation .getMovies{
+   margin-right:auto;
+  }
+  .navigation form{
+    padding:10px 0px;
+    margin-left:30px;
+  }
+  .navigation form input {
+    width:64%;
+  }
+}
+.getMovies {
+  padding:7px;
+  font-size:16px;
+  background-color:var(--title-color);
+  color:var(--text-color);
+  border:none;
+  border-radius:7px;
+  cursor: pointer;
+  margin-left:auto;
+  margin-right:60px;
+  max-height: 50px;
+}
+form{
+  padding:20px;
+  margin-left:30px;
+}
+form input {
+  padding:7px 4px;
+  font-size:16px;
+  border-radius:7px;
+  outline:none;
+  border:1px solid var(--hover-color);
+}
+form button{
+  margin-left:10px;
+  padding:7px;
+  font-size:16px;
+  background-color:var(--text-color);
+  color:var(--title-color);
+  font-weight: 500;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+  transition:all .2s ease-in-out;
+}
+form button:hover{
+  background-color:#0284C9;
+  color:#D7E5EE;
+}
+
+.container{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.movie-card{
+  min-width:250px;
+  width:20%;
+  height:400px;
+  display:flex;
+  flex-direction: column;
+  background-color:var(--title-color);
+  margin:20px;
+  border-radius:8px;
+  box-shadow:1px 1px 6px 1px #000;
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow .4s ease-in-out, 
+              transform .8s ease-in-out;
+}
+.movie-card:hover{
+  box-shadow:1px 1px 6px 1px var(--title-color);
+  transform:scale(1.03);
+}
+.movie-card:hover .info-movie{
+  bottom:0%;
+}
+.movie-img{
+  height:100%;
+  width:100%;
+  
+}
+.movie-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  overflow:hidden;
+}
+
+.info-movie{
+  width:100%;
+  min-height:25%;
+  max-height:40%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  bottom:-100%;
+  background-color:#0a3556a9;
+  transition:all .3s ease-in-out;
+  display:flex;
+  flex-direction:column;
+}
+.info-movie h2{
+  font-size:14px;
+  color:var(--text-color);
+  text-align:center;
+  padding:10px;
+}
+.rating{
+  background-color:var(--alternative-color);
+  color:#0A3556;
+  font-weight: 600;
+  border-radius:10px;
+  padding:5px;
+}
+.min{
+  color:rgb(170, 32, 32);
+}
+.medium {
+  color: rgb(255, 136, 0);
+}
+.max {
+  color: rgb(25, 116, 25);
 }
