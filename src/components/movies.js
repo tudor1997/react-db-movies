@@ -1,6 +1,9 @@
 import React from 'react'
 import {imageUrl} from '../moviesAPI/api'
-const Movies = ({title, poster_path, vote_average}) => {
+import { Link } from 'react-router-dom';
+
+const Movies = ({title, poster_path, vote_average, id}) => {
+
     let rating = "";
     if(vote_average <= 5) {
         rating = "rating min"
@@ -9,7 +12,9 @@ const Movies = ({title, poster_path, vote_average}) => {
     }else if (vote_average >= 7) {
         rating = "rating max"
     }
+    
     return (
+        <Link  to={`/home/${id}`}>
         <article className="movie-card">
             <div className="movie-img">
                 <img src={`${imageUrl}${poster_path}`} alt="" />
@@ -19,6 +24,7 @@ const Movies = ({title, poster_path, vote_average}) => {
                 <span className={`${rating}`}>{vote_average}</span>
             </div>
         </article>
+        </Link>
     )
 }
 
