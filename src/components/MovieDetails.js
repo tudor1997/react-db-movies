@@ -28,7 +28,7 @@ const MovieDetails = () => {
                     </div>
                     <div className="details-container">
                     <h1 className="movie-title">{title}</h1>
-                    <h5 className="movie-date">Release data: {release_date}</h5>
+                    <h5 className="movie-date">Release date: {release_date}</h5>
                     <span className={rating}>{vote_average}</span>
                     <p>{overview}</p>
 
