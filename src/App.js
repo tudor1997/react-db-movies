@@ -15,10 +15,12 @@ function App() {
   return (
    
     <Router>
+   
     <Switch>
     <Route exact path="/">
     <Home/>
     </Route>
+    
     <Route exact path="/home" element={ <Home/>}>
     <Home/>
      </Route>

@@ -21,15 +21,20 @@ const MoviesProvider = ({children}) => {
           setSearch('');
     }
     const getMovies = async (API) => {
-        const response = await fetch(API);
-        const data = await response.json();
-      ;
-        setMoviesDB(data.results);
+      fetch(API, {
+        headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+      }).then((response) => response.json())
+        .then((data) =>  setMoviesDB(data.results));
+       
+        
       }
    
       
     return (
-        <MoviesContext.Provider value={{handleSubmit, getMovies, moviesDB, search, setSearch}}>
+        <MoviesContext.Provider value={{handleSubmit, getMovies, moviesDB, search, setSearch ,url}}>
             {children}
         </MoviesContext.Provider>
     )
