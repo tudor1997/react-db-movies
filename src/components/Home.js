@@ -1,7 +1,8 @@
-import React, {useContext}  from 'react'
-import Movies from './movies';
+import React , {useContext} from 'react'
 import { MoviesContext } from '../context/movies';
 import Header from './Header';
+import Loading from './Loading';
+import MoviesList from './MoviesList';
 const Home = () => {
 
   const {moviesDB} = useContext(MoviesContext);
@@ -9,16 +10,10 @@ const Home = () => {
         <div className="app">
         <h1 className="app-title">Movies DB</h1>
           <Header />
-       
-  
-        <div className="container">
-          
-        {moviesDB && moviesDB.map((movie) => {
-         return <Movies key={movie.id} {...movie}></Movies>
-        })
-  
-        }
-        </div>
+      
+       {moviesDB.length < 1 ? <Loading/> : <MoviesList/>}
+      
+   
       </div>
     )
 }

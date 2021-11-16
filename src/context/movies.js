@@ -7,8 +7,9 @@ const MoviesProvider = ({children}) => {
 
     const [moviesDB, setMoviesDB] = useState([]);
     const [search, setSearch] = useState('');
- 
+   
     useEffect(() =>{
+      
         getMovies(url);
        
     },[])
@@ -21,15 +22,10 @@ const MoviesProvider = ({children}) => {
           setSearch('');
     }
     const getMovies = async (API) => {
-      fetch(API, {
-        headers : { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-         }
-      }).then((response) => response.json())
-        .then((data) =>  setMoviesDB(data.results));
-       
-        
+      const result = await fetch(API);
+      const data = await result.json()
+     
+      setMoviesDB(data.results);
       }
    
       

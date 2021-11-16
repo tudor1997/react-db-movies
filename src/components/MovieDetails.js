@@ -3,7 +3,7 @@ import { MoviesContext } from '../context/movies';
 import { useParams } from 'react-router';
 import {imageUrl} from '../moviesAPI/api'
 import { Link } from 'react-router-dom';
-
+import Loading from './Loading';
 const MovieDetails = () => {
     const {moviesDB} = useContext(MoviesContext);
     const {id} = useParams();
